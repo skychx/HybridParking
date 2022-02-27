@@ -1,0 +1,23 @@
+{
+  "name": "@hybridjs/perf-monitor",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "rm -rf dist && rollup -w -m -c ./rollup.config.js",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "@rollup/plugin-html": "^0.2.4",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.3.1",
+    "rollup": "^2.68.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^1.1.0",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "web-vitals": "^2.1.4"
+  }
+}
