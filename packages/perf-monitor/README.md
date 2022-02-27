@@ -26,7 +26,6 @@
 ### Other Web Vitals
 
 - [First Paint (FP)](https://developer.mozilla.org/en-US/docs/Glossary/First_paint)
-
 - [First Contentful Paint (FCP)](https://web.dev/fcp/)
 - [Time to First Byte (TTFB)](https://web.dev/ttfb/)
 - [DOMContentLoaded (DCL)](https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event)
