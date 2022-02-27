@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "rm -rf dist && rollup -w -m -c ./rollup.config.js",
-    "build": "vite build",
+    "build": "rm -rf dist && rollup -m -c ./rollup.config.js",
     "serve": "vite preview"
   },
   "devDependencies": {
@@ -15,9 +15,15 @@
     "rollup": "^2.68.0",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.3.1",
     "typescript": "^4.5.5"
   },
   "dependencies": {
     "web-vitals": "^2.1.4"
-  }
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
 }
