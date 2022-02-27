@@ -13,7 +13,7 @@
 
 <br />
 
-##Web Vitals
+## Web Vitals
 
 ### Core Web Vitals
 
@@ -80,7 +80,7 @@ import
 | L      | ✅                 | ✅           |
 | CLS    | ✅                 | ❌           |
 
-Safari not support `first-paint`、`largest-contentful-paint` and `cumulative-layout-shift` Event
+Safari does not support `first-paint`、`largest-contentful-paint` and `cumulative-layout-shift` Event.
 
 <br />
 
