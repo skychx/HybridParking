@@ -72,14 +72,15 @@ import
 | vitals | Android(Chromium) | iOS(Safari) |
 | ------ | ----------------- | ----------- |
 | FP     | ✅                 | ❌           |
-| FCP    | ✅                 | ✅           |
+| FCP    | ✅                 | ✅ (>= 14.5) |
 | LCP    | ✅                 | ❌           |
 | TTFB   | ✅                 | ✅           |
 | DCL    | ✅                 | ✅           |
 | L      | ✅                 | ✅           |
+| FID    | ✅                 | ❌           |
 | CLS    | ✅                 | ❌           |
 
-Safari does not support `first-paint`、`largest-contentful-paint` and `cumulative-layout-shift` Event.
+Safari does not support `first-paint`、`largest-contentful-paint`、`first-input` and `cumulative-layout-shift` Event.
 
 <br />
 

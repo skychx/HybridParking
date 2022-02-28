@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-export { getCLS, getFCP, getLCP } from 'web-vitals';
+export { getCLS, getFCP, getLCP, getFID } from 'web-vitals';
 export { getFP } from './getFP';
 export { getTTFB } from './getTTFB';
 export { getDCL } from './getDCL';

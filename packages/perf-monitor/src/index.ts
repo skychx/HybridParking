@@ -17,49 +17,39 @@
 import { Metric } from 'web-vitals/src/types';
 import { createRoot } from './dom/root';
 
-import { ID_PREFIX, Perf, Vital2Color } from "./const";
-import { getTTFB, getFP, getFCP, getLCP, getCLS, getDCL, getL } from './perf';
+import { ID_PREFIX, Vital2Color } from "./const";
+import { getTTFB, getFP, getFCP, getLCP, getCLS, getDCL, getL, getFID } from './perf';
 
-/**
- * TTFB
- * // an arbitrary number can't be placed on what consists of a "good" TTFB score
- * @see https://web.dev/ttfb/#what-is-a-good-ttfb-score
- *
- * FP、FCP、LCP、CLS
- * @see https://web.dev/vitals/
- *
- * DCL
- * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
- *
- * L(OnLoad)
- * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event
- */
 const Maps = {
-  [Perf.FP]: {
+  'FP': {
     c: getFP,
     v: [2000, 4000],
   },
-  [Perf.FCP]: {
+  'FCP': {
     c: getFCP,
     v: [2000, 4000],
   },
-  [Perf.LCP]: {
+  'LCP': {
     c: getLCP,
     v: [2500, 4000],
   },
-  [Perf.TTFB]: {
+  'TTFB': {
     c: getTTFB,
     v: [],
   },
-  [Perf.DCL]: {
+  'DCL': {
     c: getDCL,
     v: [],
   },
-  [Perf.L]: {
+  'L': {
     c: getL,
     v: [],
   },
-  [Perf.CLS]: {
+  'FID': {
+    c: getFID,
+    v: [100, 200],
+  },
+  'CLS': {
     c: getCLS,
     v: [0.1, 0.25],
   },
