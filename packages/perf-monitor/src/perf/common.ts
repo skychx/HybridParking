@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { NavigationTimingPolyfillEntry } from 'web-vitals/src/types';
 
 export function afterLoad(callback: () => void) {
   if (document.readyState === 'complete') {
@@ -22,4 +23,35 @@ export function afterLoad(callback: () => void) {
     // Queue a task so the callback runs after `loadEventEnd`.
     addEventListener('load', () => setTimeout(callback, 0));
   }
+}
+
+export function getNavigationEntryFromPerformanceTiming (): NavigationTimingPolyfillEntry {
+  // Really annoying that TypeScript errors when using `PerformanceTiming`.
+  const timing = performance.timing;
+
+  const navigationEntry: {[key: string]: number | string} = {
+    entryType: 'navigation',
+    startTime: 0,
+  };
+
+  for (const key in timing) {
+    if (key !== 'navigationStart' && key !== 'toJSON') {
+      navigationEntry[key] = Math.max(
+          (timing[key as keyof PerformanceTiming] as number) -
+          timing.navigationStart, 0);
+    }
+  }
+  return navigationEntry as unknown as NavigationTimingPolyfillEntry;
+};
+
+export function getNavigationEntry(indicator: keyof PerformanceNavigationTiming) {
+  const navigationEntry = (performance.getEntriesByType('navigation')[0] ||
+    getNavigationEntryFromPerformanceTiming()) as PerformanceNavigationTiming;
+    const value = navigationEntry[indicator] as number;
+
+  if (value < 0 || value > performance.now()) {
+    return;
+  }
+
+  return value;
 }

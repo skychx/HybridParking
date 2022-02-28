@@ -14,8 +14,24 @@
  * limitations under the License.
  */
 
-export { getCLS, getFCP, getLCP } from 'web-vitals';
-export { getFP } from './getFP';
-export { getTTFB } from './getTTFB';
-export { getDCL } from './getDCL';
-export { getL } from './getL';
+import { ReportHandler, Metric } from 'web-vitals/src/types';
+import { afterLoad, getNavigationEntry } from './common';
+
+export const getTTFB = (onReport: ReportHandler) => {
+  afterLoad(() => {
+    try {
+      const value = getNavigationEntry('responseStart');
+
+      if (value) {
+        onReport({
+          // @ts-ignore
+          name: 'TTFB',
+          // @ts-ignore
+          value: value,
+        } as Metric)
+      }
+    } catch (error) {
+      // Do nothing.
+    }
+  })
+}

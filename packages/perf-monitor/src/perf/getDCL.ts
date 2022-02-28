@@ -15,21 +15,23 @@
  */
 
 import { ReportHandler } from 'web-vitals/src/types';
-import { observe } from 'web-vitals/dist/modules/lib/observe';
-import { afterLoad } from './common';
+import { afterLoad, getNavigationEntry } from './common';
 
 export const getDCL = (onReport: ReportHandler) => {
   afterLoad(() => {
-    observe('navigation', (entry: PerformanceEntry) => {
-      // @ts-ignore
-      if (entry.domContentLoadedEventEnd) {
+    try {
+      const value = getNavigationEntry('domContentLoadedEventEnd');
+
+      if (value) {
         onReport({
           // @ts-ignore
           name: 'DCL',
           // @ts-ignore
-          value: entry.domContentLoadedEventEnd,
+          value: value,
         })
       }
-    })
+    } catch (error) {
+      // Do nothing.
+    }
   })
 }
