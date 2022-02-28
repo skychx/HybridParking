@@ -86,4 +86,4 @@ Safari does not support `first-paint`、`largest-contentful-paint`、`first-inpu
 
 ## LICENSE
 
-[Apache 2.0](/LICENSE)
+[Apache 2.0](./LICENSE)
