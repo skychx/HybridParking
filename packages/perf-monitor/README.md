@@ -6,7 +6,7 @@
 
 ![](doc/img/demo.gif)
 
-- **tiny**: 2.33 KiB
+- **tiny**: 2.62 KiB
 - **draggable**: support drag and drop
 - **mobile first**: first support mobile
 - **easy**: dowmload、import、use
