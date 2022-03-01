@@ -27,7 +27,7 @@ export function createRoot(perfList: string[]) {
     'z-index:999',
     'width:8em',
     'background:#fff',
-    'font-size:16px',
+    'font-size:12px',
     'font-family:sans-serif',
     'line-height:1.5em',
     'border:1px solid #898989',

@@ -18,7 +18,7 @@ import { ID_PREFIX } from '../const';
 import { createInlineStyle } from './style';
 
 const itemStyle = createInlineStyle([
-  'padding:4px 8px',
+  'padding:2px 8px',
   'pointer-events:none',
   'touch-action:none'
 ])
