@@ -2,10 +2,20 @@
   "name": "@hybridjs/perf-monitor",
   "version": "0.0.0",
   "description": "",
+  "keywords": [
+    "FP",
+    "FCP",
+    "LCP",
+    "TTFB",
+    "DCL",
+    "L",
+    "FID",
+    "CLS"
+  ],
   "scripts": {
     "start": "npm run dev",
-    "dev": "rm -rf dist && rollup -w -m -c ./rollup.config.js",
-    "build": "rm -rf dist && rollup -m -c ./rollup.config.js"
+    "dev": "rm -rf dist && rollup -w -m -c ./rollup/rollup.dev.config.js",
+    "build:js": "rm -rf dist && rollup -m -c ./rollup/rollup.prod.config.js"
   },
   "devDependencies": {
     "@rollup/plugin-html": "^0.2.4",
