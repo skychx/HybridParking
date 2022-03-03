@@ -17,48 +17,48 @@
 import { Matrix3dReg } from "../const";
 
 export function initDrag(element: HTMLDivElement) {
-    let distX = 0;
-    let distY = 0;
+  let distX = 0;
+  let distY = 0;
 
-    function touchStartListener(event: TouchEvent) {
-        event.stopPropagation()
-        event.preventDefault()
+  function touchStartListener(event: TouchEvent) {
+    event.stopPropagation()
+    event.preventDefault()
 
-        // get element transform styles
-        let matrix3dSourceValue = getComputedStyle(this, null).getPropertyValue('transform')
-        let matrix3dArrValue = matrix3dSourceValue.match(Matrix3dReg)
-    
-        // touch position
-        const clientX = event.touches[0].clientX
-        const clientY = event.touches[0].clientY
+    // get element transform styles
+    let matrix3dSourceValue = getComputedStyle(element, null).getPropertyValue('transform')
+    let matrix3dArrValue = matrix3dSourceValue.match(Matrix3dReg)
 
-        const translateX = +matrix3dArrValue[1]
-        const translateY = +matrix3dArrValue[2]
+    // touch position
+    const clientX = event.touches[0].clientX
+    const clientY = event.touches[0].clientY
 
-        // calc dist position
-        distX = clientX - translateX
-        distY = clientY - translateY
+    const translateX = matrix3dArrValue && +matrix3dArrValue[1] || 0
+    const translateY = matrix3dArrValue && +matrix3dArrValue[2] || 0
 
-        element.addEventListener('touchmove', touchMoveListener, false)
-    }
+    // calc dist position
+    distX = clientX - translateX
+    distY = clientY - translateY
 
-    function touchEndListener(event: TouchEvent){
-        event.stopPropagation()
-        event.preventDefault()
+    element.addEventListener('touchmove', touchMoveListener, { passive: true })
+  }
 
-        element.removeEventListener('touchmove', touchMoveListener)
-    }
+  function touchEndListener(event: TouchEvent) {
+    event.stopPropagation()
+    event.preventDefault()
 
-    function touchMoveListener(event: TouchEvent){
-        event.stopPropagation()
-        event.preventDefault()
+    element.removeEventListener('touchmove', touchMoveListener)
+  }
 
-        let moveX = event.touches[0].clientX - distX
-        let moveY = event.touches[0].clientY - distY
+  function touchMoveListener(event: TouchEvent) {
+    event.stopPropagation()
+    // event.preventDefault()
 
-        element.style.transform = `translate3d(${moveX}px, ${moveY}px, 1px)`
-    }
+    let moveX = event.touches[0].clientX - distX
+    let moveY = event.touches[0].clientY - distY
 
-    element.addEventListener('touchstart', touchStartListener, false)
-    element.addEventListener('touchend', touchEndListener, false)
+    element.style.transform = `translate3d(${moveX}px, ${moveY}px, 1px)`
+  }
+
+  element.addEventListener('touchstart', touchStartListener, false)
+  element.addEventListener('touchend', touchEndListener, false)
 }

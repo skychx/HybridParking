@@ -6,6 +6,7 @@ const plugins = [
   nodeResolve(),
   typescript({
     compilerOptions: { lib: ["es5", "es6", "dom"], target: "es5" },
+    outputToFilesystem: true,
   }),
   terser(),
 ];

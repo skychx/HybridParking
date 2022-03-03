@@ -1,2 +1,8 @@
 node_modules
 dist
+es
+
+.rollup.cache
+
+# Generated TypeScript files and build data
+tsconfig.tsbuildinfo

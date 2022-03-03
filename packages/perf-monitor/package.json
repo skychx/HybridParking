@@ -2,6 +2,9 @@
   "name": "@hybridjs/perf-monitor",
   "version": "0.0.0",
   "description": "",
+  "browser": "dist/perf-monitor.iife.js",
+  "module": "dist/es/index.js",
+  "main": "dist/perf-monitor.js",
   "keywords": [
     "FP",
     "FCP",
@@ -14,8 +17,11 @@
   ],
   "scripts": {
     "start": "npm run dev",
-    "dev": "rm -rf dist && rollup -w -m -c ./rollup/rollup.dev.config.js",
-    "build:js": "rm -rf dist && rollup -m -c ./rollup/rollup.prod.config.js"
+    "clean": "rm -rf dist",
+    "dev": "npm run clean && rollup -w -m -c ./rollup/rollup.dev.config.js",
+    "build": "npm run clean && npm run build:js && npm run build:ts",
+    "build:ts": "tsc -b",
+    "build:js": "rollup -m -c ./rollup/rollup.prod.config.js"
   },
   "devDependencies": {
     "@rollup/plugin-html": "^0.2.4",

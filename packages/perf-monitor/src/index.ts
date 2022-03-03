@@ -17,50 +17,50 @@
 import { Metric } from 'web-vitals/src/types';
 import { createRoot } from './dom/root';
 
-import { ID_PREFIX, Vital2Color } from "./const";
+import { ID_PREFIX, Vital2Color, Perf } from "./const";
 import { getTTFB, getFP, getFCP, getLCP, getCLS, getDCL, getL, getFID } from './perf';
 
 const Maps = {
-  'FP': {
+  [Perf.FP]: {
     c: getFP,
     v: [2000, 4000],
   },
-  'FCP': {
+  [Perf.FCP]: {
     c: getFCP,
     v: [2000, 4000],
   },
-  'LCP': {
+  [Perf.LCP]: {
     c: getLCP,
     v: [2500, 4000],
   },
-  'TTFB': {
+  [Perf.TTFB]: {
     c: getTTFB,
     v: [],
   },
-  'DCL': {
+  [Perf.DCL]: {
     c: getDCL,
     v: [],
   },
-  'L': {
+  [Perf.L]: {
     c: getL,
     v: [],
   },
-  'FID': {
+  [Perf.FID]: {
     c: getFID,
     v: [100, 200],
   },
-  'CLS': {
+  [Perf.CLS]: {
     c: getCLS,
     v: [0.1, 0.25],
   },
 }
 
-function getVitals(vital: string) {
+function getVitals(vital: Perf) {
   const getFunc = Maps[vital].c;
 
   getFunc((data: Metric) => {
     const item = document.getElementById(ID_PREFIX + vital)
-    item.lastChild.textContent = `${data.value.toFixed(1)}`
+    item!.lastChild!.textContent = `${data.value.toFixed(1)}`
     console.log(data)
 
     if (Maps[vital].v.length === 0) {
@@ -75,11 +75,11 @@ function getVitals(vital: string) {
     } else {
       bgColor = Vital2Color.POOR;
     }
-    item.style.background = bgColor;
+    item!.style.background = bgColor;
   })
 }
 
-const keys = Object.keys(Maps);
+const keys = Object.keys(Maps) as Perf[];
 
 createRoot(keys);
 keys.forEach(item => getVitals(item))

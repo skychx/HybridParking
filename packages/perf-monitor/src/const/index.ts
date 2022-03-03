@@ -16,6 +16,17 @@
 
 export const ID_PREFIX = 'perf-monitor-';
 
+export const enum Perf {
+    FP = 'FP',
+    FCP = 'FCP',
+    LCP = 'LCP',
+    TTFB = 'TTFB',
+    DCL = 'DCL',
+    L = 'L',
+    FID = 'FID',
+    CLS = 'CLS',
+}
+
 export const enum Vital2Color {
     'GOOD' = '#0cce6b',
     'NeedsImprovement' = '#ffa600',
